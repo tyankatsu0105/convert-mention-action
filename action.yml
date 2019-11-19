@@ -1,0 +1,12 @@
+name: 'Send message for slack from GitHub'
+description: ''
+inputs:
+  path:
+    description: ''
+    default: "./"
+outputs:
+  version:
+    description: "Version of package"
+runs:
+  using: 'node12'
+  main: 'lib/main.js'
