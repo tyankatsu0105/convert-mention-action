@@ -1,9 +1,9 @@
 name: 'Send message for slack from GitHub'
 description: ''
 inputs:
-  path:
+  SLACK_WEBHOOK_URL:
     description: ''
-    default: "./"
+    required: true
 outputs:
   version:
     description: "Version of package"

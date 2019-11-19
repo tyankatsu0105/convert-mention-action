@@ -24,12 +24,10 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
 
-    - name: Unit Test
-      run: npm test
+    # - name: Unit Test
+    #   run: npm test
 
-    - name: Local action test
+    - name: Mention Slack
       uses: ./
-      id: version
-
-    - name: Get version
-      run: echo "Version is  ${{ steps.version.outputs.version }}"
+      with: 
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
