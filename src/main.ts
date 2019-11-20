@@ -14,14 +14,14 @@ async function run() {
     const webhook = new IncomingWebhook(url);
 
     await webhook.send({
-      text: "I've got news for you..."
+      text: 'message from action'
     });
   } catch (error) {
     core.setFailed(error.message);
   }
 }
 
-// run();
+run();
 
 // import * as core from '@actions/core';
 
