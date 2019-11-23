@@ -4,7 +4,10 @@ inputs:
   SLACK_WEBHOOK_URL:
     description: ''
     required: true
-  convert:
+  SLACK_TOKEN:
+    description: ''
+    required: true
+  users:
     description: ''
     required: false
 outputs:
