@@ -1,6 +1,5 @@
-// import * as github from '@actions/github';
+import * as github from '@actions/github';
 import * as core from '@actions/core';
-// import { Status } from './utils';
 // import { SectionBlock, MessageAttachment, MrkdwnElement } from '@slack/types';
 import {
   IncomingWebhook,
@@ -12,10 +11,11 @@ async function run() {
   try {
     const url = core.getInput('SLACK_WEBHOOK_URL');
     const webhook = new IncomingWebhook(url);
+    console.log(github.context);
 
-    await webhook.send({
-      text: 'message from action'
-    });
+    // await webhook.send({
+    //   text: 'message from action'
+    // });
   } catch (error) {
     core.setFailed(error.message);
   }

@@ -4,6 +4,9 @@ inputs:
   SLACK_WEBHOOK_URL:
     description: ''
     required: true
+  convert:
+    description: ''
+    required: false
 outputs:
   version:
     description: "Version of package"
