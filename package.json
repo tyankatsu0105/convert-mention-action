@@ -1,5 +1,5 @@
 {
-  "name": "github-mension-to-slack",
+  "name": "message-to-slack-from-github",
   "version": "0.0.0",
   "private": true,
   "description": "",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tyankatsu0105/github-mension-to-slack.git"
+    "url": "git+https://github.com/tyankatsu0105/message-to-slack-from-github.git"
   },
   "keywords": [
     "actions",
@@ -27,24 +27,24 @@
   "dependencies": {
     "@actions/core": "^1.0.0",
     "@actions/github": "^1.1.0",
-    "@slack/types": "^1.2.1",
+    "@slack/types": "^1.3.0",
     "@slack/webhook": "^5.0.2"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",
-    "@types/node": "^12.0.4",
+    "@types/node": "^12.12.12",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
-    "eslint": "^6.6.0",
+    "eslint": "^6.7.0",
     "eslint-config-prettier": "^6.6.0",
     "eslint-plugin-prettier": "^3.1.1",
     "jest": "^24.8.0",
     "jest-circus": "^24.7.1",
     "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
-    "ts-jest": "^24.0.2",
+    "ts-jest": "^24.2.0",
     "typescript": "^3.5.1"
   }
 }
