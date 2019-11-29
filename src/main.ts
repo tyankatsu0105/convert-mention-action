@@ -16,7 +16,6 @@ async function run() {
     const users = parsedUsers(core.getInput('users'));
 
     const { context } = github;
-    console.log(JSON.stringify(context, null, 2));
 
     const slack = new Slack(SLACK_WEBHOOK_URL);
 

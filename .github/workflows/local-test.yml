@@ -29,7 +29,7 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
 
-    - name: Mention Slack
+    - name: Convert mention
       uses: ./
       env: 
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

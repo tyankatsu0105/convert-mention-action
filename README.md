@@ -1,73 +1,62 @@
 # Message to Slack from GitHub
 
-## Concept
+Convert GitHub's mention to slack's.
 
-```js
-// issue created
-// tyankatsu0105/message-to-slack-from-github 
-// 📖<https://www.リンク/|issue名>
+![demo](https://raw.githubusercontent.com/tyankatsu0105/convert-mention-action/master/assets/demo.png)
 
-// issue closed
-// tyankatsu0105/message-to-slack-from-github 
-// 📕<https://www.リンク/|issue名>
+## Supports
 
-// issue comment
-// tyankatsu0105/message-to-slack-from-github 
-// 💬<https://www.リンク/|issueのコメントの箇所>
+### Issue
 
-// issue comment mension
-// tyankatsu0105/message-to-slack-from-github @yamamoto katsuya
-// 💬<https://www.リンク/|issueのコメントの箇所>
+- created
+- closed
+- comment
+  - created
+  - edited
 
+### Pull request
 
-// PR created => done
-// tyankatsu0105/message-to-slack-from-github 
-// 📖<https://www.リンク/|PR名>
+- created
+- closed
+- comment
+  - created
+  - edited
+- review requested
+- review changed
+  - comment
+  - approve
+  - dissmiss
+- code comments
 
-// PR closed => done
-// tyankatsu0105/message-to-slack-from-github 
-// 📕<https://www.リンク/|PR名>
-
-// PR comment
-// tyankatsu0105/message-to-slack-from-github 
-// 💬<https://www.リンク/|PRのコメントの箇所>
-
-// PR comment mension
-// tyankatsu0105/message-to-slack-from-github @yamamoto katsuya
-// 💬<https://www.リンク/|PRのコメントの箇所>
-
-// PR approve
-// tyankatsu0105/message-to-slack-from-github @assignされてる人
-// ✅<https://www.リンク/|PR名>
-
-// PR dissmiss review
-// tyankatsu0105/message-to-slack-from-github @assignされてる人
-// 🚫<https://www.リンク/|PR名>
-
-// PR Add Reviewers  => done
-// tyankatsu0105/message-to-slack-from-github @Reviewers 追加された人
-// 🙏<https://www.リンク/|PR名>
-
-```
+## Usage
 
 ```yml
-name: Message to Slack from GitHub
+name: Convert GitHub's mention to Slack's
 
-on: push
+on:
+  issue_comment:
+    types: [created, edited]
+  pull_request_review_comment:
+    types: [created, edited]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+  issues:
+    types: [opened, closed]
+  pull_request:
+    types: [review_requested, opened, closed]
 
 jobs:
   message:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Message
-        uses: tyankatsu0105/message-to-slack-from-github@v1
-        env: 
+      - name: Convert mention
+        uses: tyankatsu0105/convert-mention-action@v1
+        env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 
-        with: 
-          users: '[{"tyankatsu0105": "tyankatsu", "ponday_dev": "ponday"}]'
+        with:
+          users: '[{"user1_github": "user1_slack", "user2___GitHub": "user2_Slack"}]'
           # ["githubName": "slackName"]
 ```
