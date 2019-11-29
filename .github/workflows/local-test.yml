@@ -1,13 +1,18 @@
-name: "Test"
-
-on:
-  push:
-    branches:
-      - master
-      - 'releases/*'
+name: "Message"
+on: 
+  issue_comment: 
+    types: [created, edited]
+  pull_request_review_comment: 
+    types: [created, edited]
+  pull_request_review: 
+    types: [submitted, edited, dismissed]
+  issues: 
+    types: [opened, closed]
+  pull_request: 
+    types: [review_requested, opened, closed]
 
 jobs:
-  test:
+  message:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -24,10 +29,11 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
 
-    # - name: Unit Test
-    #   run: npm test
-
     - name: Mention Slack
       uses: ./
-      with: 
+      env: 
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+
+      with: 
+        users: '[{"tyankatsu0105": "katsuya yamamoto", "yykaoruko": "kaoruko yamamoto"}]'

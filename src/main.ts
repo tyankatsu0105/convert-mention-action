@@ -1,43 +1,31 @@
-// import * as github from '@actions/github';
+import * as github from '@actions/github';
 import * as core from '@actions/core';
-// import { Status } from './utils';
-// import { SectionBlock, MessageAttachment, MrkdwnElement } from '@slack/types';
 import {
   IncomingWebhook,
   IncomingWebhookSendArguments,
   IncomingWebhookResult
 } from '@slack/webhook';
+import { parsedUsers, generateResultText } from './util';
+import { Slack } from './slack';
 
 async function run() {
   try {
-    const url = core.getInput('SLACK_WEBHOOK_URL');
-    const webhook = new IncomingWebhook(url);
+    const SLACK_WEBHOOK_URL: string = process.env.SLACK_WEBHOOK_URL || '';
+    const SLACK_TOKEN: string = process.env.SLACK_TOKEN || '';
 
-    await webhook.send({
-      text: 'message from action'
-    });
+    const users = parsedUsers(core.getInput('users'));
+
+    const { context } = github;
+    console.log(JSON.stringify(context, null, 2));
+
+    const slack = new Slack(SLACK_WEBHOOK_URL);
+
+    const resultText = await generateResultText(users, SLACK_TOKEN, context);
+
+    await slack.notify(resultText);
   } catch (error) {
     core.setFailed(error.message);
   }
 }
 
 run();
-
-// import * as core from '@actions/core';
-
-// async function run() {
-//   try {
-//     const path = core.getInput('path');
-
-//     core.debug(`Load package.json at ${path}`);
-
-//     const result = getPackageVersion(path);
-
-//     core.debug(`set output: version: ${result}`);
-//     core.setOutput('version', result);
-//   } catch (error) {
-//     core.setFailed(error.message);
-//   }
-// }
-
-// run();
