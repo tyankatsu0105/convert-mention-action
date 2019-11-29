@@ -1,5 +1,5 @@
 {
-  "name": "message-to-slack-from-github",
+  "name": "convert-mention-action",
   "version": "0.0.0",
   "private": true,
   "description": "",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tyankatsu0105/message-to-slack-from-github.git"
+    "url": "git+https://github.com/tyankatsu0105/convert-mention-action.git"
   },
   "keywords": [
     "actions",

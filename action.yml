@@ -1,5 +1,5 @@
-name: 'Send message for slack from GitHub'
-description: ''
+name: 'convert-mention-action'
+description: 'Convert GitHub's mention to Slack's'
 inputs:
   SLACK_WEBHOOK_URL:
     description: ''

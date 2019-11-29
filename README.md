@@ -7,7 +7,7 @@ Convert GitHub's mention to slack's.
 ## Concept
 
 ```yml
-name: Message to Slack from GitHub
+name: Convert GitHub's mention to Slack's
 
 on: push
 
@@ -17,8 +17,8 @@ jobs:
 
     steps:
 
-      - name: Message
-        uses: tyankatsu0105/message-to-slack-from-github@v1
+      - name: Convert mention
+        uses: tyankatsu0105/convert-mention-action@v1
         env: 
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
