@@ -66,6 +66,11 @@ export const generateResultText = async (
         includeMentionText = review.body;
         emoji = ':speech_balloon:';
         explain = 'PR comments';
+      } else if (review.state === 'dismissed') {
+        // PR comment
+        includeMentionText = review.body;
+        emoji = ':negative_squared_cross_mark:';
+        explain = 'PR dismissed';
       }
 
       link = `<${review.html_url}|${pull_request?.title}>`;
