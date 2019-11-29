@@ -5,7 +5,7 @@ import {
   ParsedUsers,
   getMatchedMembers,
   getMembers,
-  generateSlackMension,
+  generateSlackMention,
   generateGitHubMentionTextFromPullRequest
 } from './';
 
@@ -21,10 +21,10 @@ export const generateResultText = async (
   const repoName = `[${owner}/${repo}]`;
 
   /**
-   * mensionが含まれたtext
+   * mentionが含まれたtext
    * forEachでundefinedにならないように初期値空文字列入れる
    */
-  let includeMensionText = '';
+  let includeMentionText = '';
 
   let emoji;
   let explain;
@@ -39,7 +39,7 @@ export const generateResultText = async (
   switch (eventName) {
     case 'issue_comment':
       // issue コメント
-      includeMensionText = comment.body;
+      includeMentionText = comment.body;
       emoji = ':speech_balloon:';
       explain = 'Issue comments';
       link = `<${comment.html_url}|${issue?.title}>`;
@@ -47,7 +47,7 @@ export const generateResultText = async (
       break;
     case 'pull_request_review_comment':
       // PR コードコメント
-      includeMensionText = comment.body;
+      includeMentionText = comment.body;
       emoji = ':speech_balloon:';
       explain = 'PR comments';
       link = `<${comment.html_url}|${pull_request?.title}>`;
@@ -57,13 +57,13 @@ export const generateResultText = async (
       if (review.state === 'approved') {
         // PR approved
         pull_request?.assignees.forEach((assignee) => {
-          includeMensionText += `@${assignee.login} `;
+          includeMentionText += `@${assignee.login} `;
         });
         emoji = ':white_check_mark:';
         explain = 'Approve';
       } else if (review.state === 'commented') {
         // PR comment
-        includeMensionText = review.body;
+        includeMentionText = review.body;
         emoji = ':speech_balloon:';
         explain = 'PR comments';
       }
@@ -96,7 +96,7 @@ export const generateResultText = async (
         explain = 'PR close';
       } else if (action === 'review_requested') {
         // PR レビュー申請
-        includeMensionText = generateGitHubMentionTextFromPullRequest(
+        includeMentionText = generateGitHubMentionTextFromPullRequest(
           pull_request
         );
         emoji = ':bell:';
@@ -113,11 +113,11 @@ export const generateResultText = async (
   const members = getMatchedMembers(
     await getMembers(token),
     users,
-    includeMensionText
+    includeMentionText
   );
   const ids = members.map((member) => member.id);
 
-  const resultText = `${repoName} ${generateSlackMension(ids)}
+  const resultText = `${repoName} ${generateSlackMention(ids)}
   ${emoji} ${explain} ${link}`;
   return resultText;
 };
