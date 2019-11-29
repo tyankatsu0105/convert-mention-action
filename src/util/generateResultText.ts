@@ -35,13 +35,13 @@ export const generateResultText = async (
   let link;
 
   // @see https://developer.github.com/v3/activity/events/types/
-
   switch (eventName) {
     case 'issue_comment':
       // issue コメント
+      // PR コメント
       includeMentionText = comment.body;
       emoji = ':speech_balloon:';
-      explain = 'Issue comments';
+      explain = 'Comments';
       link = `<${comment.html_url}|${issue?.title}>`;
 
       break;
