@@ -1,6 +1,18 @@
-# Message to Slack from GitHub
+# Convert mention action
 
-Convert GitHub's mention to slack's.
+<p align="center"><img width="143px" height="130px" src="https://raw.githubusercontent.com/tyankatsu0105/convert-mention-action/master/assets/logo.png" alt="Convert GitHub's mention to slack's."></p>
+
+<h2 align="center">Convert mention action</h2>
+<p align="center">
+  Convert GitHub's mention to slack's.
+</p>
+<p align="center">
+  <a title="MIT License" href="[LICENSE](https://opensource.org/licenses/MIT)" rel="nofollow">
+    <img src="https://img.shields.io/badge/License-MIT-green.svg">
+  </a>
+  <br>
+  <br>
+</p>
 
 ![demo](https://raw.githubusercontent.com/tyankatsu0105/convert-mention-action/master/assets/demo.png)
 
