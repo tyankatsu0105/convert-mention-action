@@ -4,7 +4,7 @@
 
 <h2 align="center">Convert mention action</h2>
 <p align="center">
-  Convert GitHub's mention to slack's.
+  Convert GitHub's mention to Slack's.
 </p>
 <p align="center">
   <a title="MIT License" href="[LICENSE](https://opensource.org/licenses/MIT)" rel="nofollow">
