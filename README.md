@@ -72,3 +72,28 @@ jobs:
           users: '[{"user1_github": "user1_slack", "user2___GitHub": "user2_Slack"}]'
           # ["githubName": "slackName"]
 ```
+
+If you can set file `convert-mention.json` on root, this action reads that file👍
+In this case, you don't need `with: usrs:` in action file.
+
+```json
+{
+  "users": {
+    "tyankatsu0105": "katsuya yamamoto",
+    "yykaoruko": "kaoruko yamamoto"
+  }
+}
+```
+
+```yml
+jobs:
+  message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Convert mention
+        uses: tyankatsu0105/convert-mention-action@v1.0.1
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+```
