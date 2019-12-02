@@ -63,7 +63,7 @@ jobs:
 
     steps:
       - name: Convert mention
-        uses: tyankatsu0105/convert-mention-action@v1.0.1
+        uses: tyankatsu0105/convert-mention-action@v1.1.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
@@ -92,7 +92,7 @@ jobs:
 
     steps:
       - name: Convert mention
-        uses: tyankatsu0105/convert-mention-action@v1.0.1
+        uses: tyankatsu0105/convert-mention-action@v1.1.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
