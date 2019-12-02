@@ -35,5 +35,5 @@ jobs:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 
-      # with: 
-      #   users: '[{"tyankatsu0105": "katsuya yamamoto", "yykaoruko": "kaoruko yamamoto"}]'
+      with: 
+        users: '[{"tyankatsu0105": "katsuya yamamoto", "yykaoruko": "kaoruko yamamoto"}]'
