@@ -1,19 +1,21 @@
 import * as github from '@actions/github';
 import * as core from '@actions/core';
-import {
-  IncomingWebhook,
-  IncomingWebhookSendArguments,
-  IncomingWebhookResult
-} from '@slack/webhook';
 import { parsedUsers, generateResultText } from './util';
 import { Slack } from './slack';
+import fs from 'fs';
+import path from 'path';
 
 async function run() {
   try {
     const SLACK_WEBHOOK_URL: string = process.env.SLACK_WEBHOOK_URL || '';
     const SLACK_TOKEN: string = process.env.SLACK_TOKEN || '';
 
-    const users = parsedUsers(core.getInput('users'));
+    const users =
+      JSON.parse(
+        fs
+          .readFileSync(path.join(process.cwd(), './convert-mention.json'))
+          .toString()
+      ).users || parsedUsers(core.getInput('users'));
 
     const { context } = github;
 

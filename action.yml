@@ -1,18 +1,9 @@
 name: 'convert-mention-action'
 description: "Convert GitHub's mention to Slack's"
 inputs:
-  SLACK_WEBHOOK_URL:
-    description: ''
-    required: true
-  SLACK_TOKEN:
-    description: ''
-    required: true
   users:
     description: ''
     required: false
-outputs:
-  version:
-    description: "Version of package"
 runs:
   using: 'node12'
   main: 'lib/main.js'
