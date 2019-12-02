@@ -91,6 +91,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v1
+      
       - name: Convert mention
         uses: tyankatsu0105/convert-mention-action@v1.1.0
         env:

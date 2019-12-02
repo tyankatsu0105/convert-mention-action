@@ -5,17 +5,16 @@ import { Slack } from './slack';
 import fs from 'fs';
 import path from 'path';
 
+const configPath = path.join(process.cwd(), './convert-mention.json');
+
 async function run() {
   try {
     const SLACK_WEBHOOK_URL: string = process.env.SLACK_WEBHOOK_URL || '';
     const SLACK_TOKEN: string = process.env.SLACK_TOKEN || '';
 
-    const users =
-      JSON.parse(
-        fs
-          .readFileSync(path.join(process.cwd(), './convert-mention.json'))
-          .toString()
-      ).users || parsedUsers(core.getInput('users'));
+    const users = fs.existsSync(configPath)
+      ? JSON.parse(fs.readFileSync(configPath).toString()).users
+      : parsedUsers(core.getInput('users'));
 
     const { context } = github;
 
