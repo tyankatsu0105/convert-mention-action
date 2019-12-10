@@ -4,16 +4,16 @@ import * as github from '@actions/github';
 export const generateGitHubMentionTextFromPullRequest = (
   pull_request: typeof github.context.payload.pull_request
 ) => {
-  let includeMentionText = '';
+  const mentions: string[] = [];
 
   if (pull_request?.requested_reviewers) {
     pull_request?.requested_reviewers.forEach((reviewer) => {
-      includeMentionText += `@${reviewer.login}`;
+      mentions.push(`@${reviewer.login}`);
     });
   }
   if (pull_request?.requested_reviewer) {
-    includeMentionText = `@${pull_request?.requested_reviewer.login}`;
+    mentions.push(`@${pull_request?.requested_reviewer.login}`);
   }
 
-  return includeMentionText;
+  return mentions.join(' ');
 };
