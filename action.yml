@@ -1,10 +1,10 @@
 name: 'convert-mention-action'
 description: "Convert GitHub's mention to Slack's"
-  inputs:
-    users:
-      description: 'Users list'
-      default: '.github/convert-mention.json'
-      required: true
+inputs:
+  users:
+    description: 'Users list'
+    default: '.github/convert-mention.json'
+    required: true
 
 runs:
   using: 'node12'
