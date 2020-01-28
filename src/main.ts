@@ -12,9 +12,8 @@ async function run() {
     const SLACK_WEBHOOK_URL: string = process.env.SLACK_WEBHOOK_URL || '';
     const SLACK_TOKEN: string = process.env.SLACK_TOKEN || '';
 
-    const users = JSON.parse(
-      fs.readFileSync(core.getInput('users')).toString()
-    );
+    /*eslint-disable-next-line @typescript-eslint/no-var-requires */
+    const users = require(core.getInput('users'));
 
     const { context } = github;
 
