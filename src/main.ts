@@ -5,15 +5,14 @@ import { Slack } from './slack';
 import fs from 'fs';
 import path from 'path';
 
-const configPath = path.join(process.cwd(), './convert-mention.json');
-
 async function run() {
   try {
     const SLACK_WEBHOOK_URL: string = process.env.SLACK_WEBHOOK_URL || '';
     const SLACK_TOKEN: string = process.env.SLACK_TOKEN || '';
 
+    const configPath = path.join(process.cwd(), core.getInput('users'));
     /*eslint-disable-next-line @typescript-eslint/no-var-requires */
-    const users = require(core.getInput('users'));
+    const users = require(configPath);
 
     const { context } = github;
 
