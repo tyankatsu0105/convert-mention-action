@@ -35,7 +35,7 @@ export const getMatchedMembers = (
 ): Member[] =>
   members.filter((member) =>
     getMatchedSlackMentions(getGitHubMentionsByArgs(text), users).includes(
-      member['real_name']
+      member['profile']['real_name']
     )
   );
 
