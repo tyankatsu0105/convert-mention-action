@@ -12,9 +12,9 @@ async function run() {
     const SLACK_WEBHOOK_URL: string = process.env.SLACK_WEBHOOK_URL || '';
     const SLACK_TOKEN: string = process.env.SLACK_TOKEN || '';
 
-    const users = fs.existsSync(configPath)
-      ? JSON.parse(fs.readFileSync(configPath).toString()).users
-      : parsedUsers(core.getInput('users'));
+    const users = JSON.parse(
+      fs.readFileSync(core.getInput('users')).toString()
+    );
 
     const { context } = github;
 
