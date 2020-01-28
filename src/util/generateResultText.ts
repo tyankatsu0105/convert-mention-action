@@ -2,15 +2,16 @@
 
 import * as github from '@actions/github';
 import {
-  ParsedUsers,
   getMatchedMembers,
   getMembers,
   generateSlackMention,
   generateGitHubMentionTextFromPullRequest
 } from './';
 
+import { Users } from '~types/Users';
+
 export const generateResultText = async (
-  users: ParsedUsers,
+  users: Users,
   token: string,
   context: typeof github.context
 ) => {

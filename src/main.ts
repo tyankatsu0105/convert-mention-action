@@ -1,6 +1,6 @@
 import * as github from '@actions/github';
 import * as core from '@actions/core';
-import { parsedUsers, generateResultText } from './util';
+import { generateResultText } from './util';
 import { Slack } from './slack';
 import fs from 'fs';
 import path from 'path';
