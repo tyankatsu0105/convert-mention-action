@@ -80,9 +80,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - user: actions/checkout@v2
+
       - name: Convert mention
         uses: tyankatsu0105/convert-mention-action@v2.0.0
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
 ```
+
+>This action requests the user:read function and permission scope of the slack app.
