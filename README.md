@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - user: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Convert mention
         uses: tyankatsu0105/convert-mention-action@v2.0.0
